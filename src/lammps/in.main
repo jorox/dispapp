@@ -1,0 +1,42 @@
+variable    NUC   index 20 #number of unit cells in each direction
+variable    TEMP  index 10
+variable    ALAT  index 5.256
+variable    PRESS index 0
+
+units metal 
+boundary p p p
+lattice sc 1.0 
+
+#region full block -${NUC} ${NUC} -${NUC} ${NUC} -${NUC} ${NUC} units lattice
+#create_box 1 full
+read_data argon_prim.lmp
+mass 1 39.948
+
+timestep   0.005 #5 fs
+pair_style lj/cut 12.0
+pair_coeff 1 1 0.01015122 3.419
+variable TEMP2 equal 2*${TEMP}
+velocity all create ${TEMP2} 43221 dist gaussian sum yes rot yes
+
+
+fix 1 all npt temp ${TEMP} ${TEMP} 0.5 iso ${PRESS} ${PRESS} 1.0 nreset 10000 pchain 8 drag 1.0
+
+variable     acellx  equal cella/${NUC}
+variable     acelly  equal cellb/${NUC}
+variable     acellz  equal cellc/${NUC}
+variable     mypress equal pxx
+
+thermo       100
+thermo_style custom step temp pxx pyy pzz v_acellx v_acelly v_acellz
+
+variable  nequil equal ${TEQ}/dt
+variable  ncorr  equal ${TCOR}/dt
+variable  nsteps equal ${nequil}+5*(10*${ncorr})
+
+fix 2 all ave/time 1  10  10 v_mypress v_acellx v_acelly v_acellz &
+file ${WORKDIR}/acell.${PRESS}.dat
+
+fix 3 all phonon   10 ${ncorr} ${nequil} &
+map.argon_prim.lmp ${WORKDIR}/ArPrim.${PRESS} nasr 100
+
+run ${nsteps}

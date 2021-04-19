@@ -1,0 +1,12 @@
+log.*
+*.pdf
+*.lmp
+*.pyc
+*.dat
+out.*
+*.log
+*.bin.*
+.ipynb_checkpoints/
+workspace/
+SAAP/
+doc/build/

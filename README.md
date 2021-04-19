@@ -1,33 +1,46 @@
-# Introduction
-We are going to use Python and LAMMPS to look at how the normal modes of vibration change as a function of the structural properties of Argon.
+# Interactive Phonon Dispersion Curve
 
-# LAMMPS
-## Setup
-Make sure that you install the USER-Phonon package needed to calculate the phonon properties
+Create an interactive dispersion curve for an FCC crystal using LAMMPS, Python, and Bokeh. Useful for studying the effect of pressure (or another parameter) on the normal modes.
 
-## Interatomic potential
-We are going to use the LJ potential for Argon. The parameters are from @whiteLennardJonesModelArgon1999. The values of $\sigma$ and $\epsilon$ are
+## Requirements
 
-| Parameter | Value       |
-| --------- | ----------- |
-| $\sigma$   | 3.419 Å |
-| $\epsilon$ | 0.01015122 eV |
+- A valid LAMMPS installation with fix-phonon enabled
+- Python
+- Bokeh
 
-## Chemocal properties of argon
-- Melting point 
-- Unit cell [WebElements](https://www.webelements.com/argon/crystal_structure.html)
-  - Space group: Fm3-m
-  - Space group number: 225
-  - Structure: ccp (cubic close-packed) (FCC)
-  - Cell parameters:
-    - a: 525.6 pm
-    - b: 525.6 pm
-    - c: 525.6 pm
-    - α: 90.000°
-    - β: 90.000°
-    - γ: 90.000°
+## Output
 
-We are going to use the conventional cell for FCC unit cell with a supercell of 10x10x10
+The project creates a standalone web page that lets the user explore the change in the dispersion curve as a function of pressure
 
-## Molecular Dynamics Simulation
-The equilibrium unit cell for Argon at
+## Installation
+
+   git clone https://github.com/jorox/
+   cd disp_app
+   mkdir workspace
+   ./main.sh
+
+## main.sh
+
+The project source files are under ./src in two folders
+
+- lammps
+- python
+
+The first holds the input file needed by LAMMPS to run the simulation. It only requires a data file and a map file to work. These can be generated using the python module developed for this task
+
+## pylmp
+
+A python wrapper to use the modules for pre and post processing
+
+## mdlib.fixphonon
+
+The fixphonon submodule has been tested using the CuPhonon data provided by LAMMPS
+
+## Documentation
+
+To build the documentation for the project
+
+    cd doc
+    make clean
+    sphinx-apidoc -f -o source/ ../../src/python
+    make html
