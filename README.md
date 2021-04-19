@@ -14,10 +14,10 @@ The project creates a standalone web page that lets the user explore the change 
 
 ## Installation
 
-   git clone https://github.com/jorox/
-   cd disp_app
-   mkdir workspace
-   ./main.sh
+    git clone https://github.com/jorox/dispapp.git
+    cd disp_app
+    mkdir workspace
+    ./main.sh
 
 ## main.sh
 
