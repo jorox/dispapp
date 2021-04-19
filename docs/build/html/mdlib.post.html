@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mdlib.post package &mdash; Argon Phonon Properties 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mdlib.post.symmetry package" href="mdlib.post.symmetry.html" />
+    <link rel="prev" title="mdlib package" href="mdlib.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Argon Phonon Properties
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lammps.html">The LAMMPS stuff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="post.html">Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Conclusion</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mdlib.html">mdlib package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="mdlib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">mdlib.post package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mdlib.pre.html">mdlib.pre package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mdlib.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mdlib.html#module-mdlib.Csystem">mdlib.Csystem module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mdlib.html#module-mdlib">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pylmp.html">pylmp package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Argon Phonon Properties</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Python Modules</a> &raquo;</li>
+        
+          <li><a href="mdlib.html">mdlib package</a> &raquo;</li>
+        
+      <li>mdlib.post package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/mdlib.post.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mdlib-post-package">
+<h1>mdlib.post package<a class="headerlink" href="#mdlib-post-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mdlib.post.symmetry.html">mdlib.post.symmetry package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mdlib.post.symmetry.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdlib.post.symmetry.html#module-mdlib.post.symmetry.FCC">mdlib.post.symmetry.FCC module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mdlib.post.symmetry.html#module-mdlib.post.symmetry">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mdlib.post.disptools">
+<span id="mdlib-post-disptools-module"></span><h2>mdlib.post.disptools module<a class="headerlink" href="#module-mdlib.post.disptools" title="Permalink to this headline">¶</a></h2>
+<p>Process data from log files of fix-phonon.</p>
+<p>Use it to parse log files, find intermediate eigenvector-eigenvalue pairs, sort eigenvalues, and more.
+Cannot be used as a standalone module</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add possibility to process log file to disp file directly</p>
+</div>
+<dl class="py function">
+<dt id="mdlib.post.disptools.build_curve">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">build_curve</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">SPs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eig</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#mdlib.post.disptools.build_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a specific dispersion curve using q vectors and eigen values
+.. todo:: make return a single np.array and adjust phana.ipynb</p>
+<p>Main function that builds a dispersion curve which is the eigenvalues and eigenvectors along a trajectory of special points
+.. note:: the function does not check if the special points form a valid line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>SPs</strong> (<em>list</em>) – List of special points to find the dispersion curve along</p></li>
+<li><p><strong>eig</strong> (<em>np.array</em>) – nx3 array of eigenvalues</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an n array representing the q-points of the trajecotry, the eigenvalues/vectors, and the q-points of the special points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.array, np.array, list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.disptools.collinear">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">collinear</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stpt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pt</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#mdlib.post.disptools.collinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine whether three points are collinear and in in order. Useful for finding intermediate eigenvectors</p>
+<p>Check if the three points are parallel and if the midpoint is between the start and end exclusively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stpt</strong> (<em>np.array</em>) – The starting point</p></li>
+<li><p><strong>endpt</strong> (<em>np.array</em>) – The end point</p></li>
+<li><p><strong>pt</strong> (<em>np.array</em>) – The point to check</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>true or false</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.disptools.find_eigvals">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">find_eigvals</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="headerlink" href="#mdlib.post.disptools.find_eigvals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the eigenvalues for a specific eigenvector</p>
+<p>Return the eigenvalues for a specific vector. If the vector is not in the list return np.NaN</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qs</strong> (<em>np.array</em>) – mx3 array of eigenvector(s) we are looking for</p></li>
+<li><p><strong>q</strong> (<em>np.array</em>) – nx3 array of eigenvectors</p></li>
+<li><p><strong>D</strong> (<em>np.array</em>) – nx3 array of eigenvectors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return the eigenvalues or NaN if not found</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array or np.NaN</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.disptools.find_intermediate_q">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">find_intermediate_q</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qstart</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qend</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qarray</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#mdlib.post.disptools.find_intermediate_q" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return intermediate q’s in increasing order between qstart and qend with their distance from qstart</p>
+<p>From a list of eigenvectors find the list which are between two points (exclusively)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qstart</strong> (<em>np.array</em>) – starting q-vector</p></li>
+<li><p><strong>qend</strong> (<em>np.array</em>) – ending q-vectors</p></li>
+<li><p><strong>qarray</strong> (<em>np.array</em>) – nx3 array of all q-vectors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of q-vectors which are in between</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.disptools.get_data">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">get_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fin</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#mdlib.post.disptools.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse fix-phonon log file for eigenvectors and eigenvalues</p>
+<p>This function only looks for the last dynamical matrix in the log file. It sorts the eigenvalues for each q-vector by increasing order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fin</strong> (<em>str</em>) – log file name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>numpy arrays of eigenvectors and eigenvalues unsorted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.array, np.array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.disptools.sort_eigvals">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">sort_eigvals</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qsord</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eigenqs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="headerlink" href="#mdlib.post.disptools.sort_eigvals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort eigenvalues by distance from previous point</p>
+<p>The function tries to sort the eigenvalues for each q_i vector by 
+finding the closest eigenvalue to the previous e_j to e_i-1. 
+The algorithm does not always produce correct results, but is fast</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Assumes that the q-vectors have to be in increasing order</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>don’t use this. Just sort eigenvalues by increasing</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qsord</strong> (<em>np.array</em>) – nx3 array of eigenvectors in order</p></li>
+<li><p><strong>eigenqs</strong> (<em>np.array</em>) – nx3 array of eigenvalues</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return an eigenvalue array now sorted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.disptools.sort_eigvals_lsq">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.disptools.</span></code><code class="sig-name descname"><span class="pre">sort_eigvals_lsq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qsord</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eigenqs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="headerlink" href="#mdlib.post.disptools.sort_eigvals_lsq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort eigenvalues by sum of least-squares method</p>
+<p>Calculate the distance between (q_i,e_i,j) and (q_i+1,e_i+1,k) for all
+permutations of k, and the find the permutation that produces the least
+sum of squares of the distances j-k.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qsord</strong> (<em>np.array</em>) – nx3 array of eigenvectors in order</p></li>
+<li><p><strong>eigenqs</strong> (<em>np.array</em>) – nx3 array of eigenvalues</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>return an eigenvalue array now sorted</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Assumes that the q vectors are in inceasing order</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mdlib.post.fixphonon">
+<span id="mdlib-post-fixphonon-module"></span><h2>mdlib.post.fixphonon module<a class="headerlink" href="#module-mdlib.post.fixphonon" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="mdlib.post.fixphonon.find_files">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.fixphonon.</span></code><code class="sig-name descname"><span class="pre">find_files</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wdir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#mdlib.post.fixphonon.find_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return ordered list of log file names from a directory</p>
+<p>Use a filename pattern to find the corresponding log files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wdir</strong> (<em>str</em>) – working directory</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – filename pattern with wildcard</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of file names in order</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.fixphonon.get_slider_vals">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.fixphonon.</span></code><code class="sig-name descname"><span class="pre">get_slider_vals</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#mdlib.post.fixphonon.get_slider_vals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return values for the slider from file names</p>
+<p>The file pattern name is used to extract the slider values instead of just using file names</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>files</strong> (<em>list</em>) – file list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>values for the slider used in plotting</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.fixphonon.make_interactive_plot">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.fixphonon.</span></code><code class="sig-name descname"><span class="pre">make_interactive_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qr</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">numpy.array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pvals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp_data_full</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disp_inter_full</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#mdlib.post.fixphonon.make_interactive_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the interactive Bokeh plot as a standalone html web page</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qr</strong> (<em>np.array</em>) – x-values for the points</p></li>
+<li><p><strong>pvals</strong> (<em>list</em>) – slider values</p></li>
+<li><p><strong>disp_data_full</strong> (<em>list</em>) – list of arrays containing q vectors and eigenvalues for points</p></li>
+<li><p><strong>disp_inter_full</strong> (<em>list</em>) – list of arrays containing interpolated x and eigen values</p></li>
+<li><p><strong>labels</strong> (<em>dict</em>) – labels for the x-axis indicating special points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>add output file name option</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="mdlib.post.fixphonon.process_log_files">
+<code class="sig-prename descclassname"><span class="pre">mdlib.post.fixphonon.</span></code><code class="sig-name descname"><span class="pre">process_log_files</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nintp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#mdlib.post.fixphonon.process_log_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dispersion data for files with interpolation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files</strong> (<em>list</em>) – list of file names to process</p></li>
+<li><p><strong>SPs</strong> (<em>list</em>) – symmetry points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the x-values, dispersion points, interpolation, and coordinates of special points using cubic splines</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.array, list, list, list]</p>
+</dd>
+</dl>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Add custom SP feature</p>
+</div>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>put qr inside disp_data like disp_inter</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mdlib.post">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mdlib.post" title="Permalink to this headline">¶</a></h2>
+<p>Post-processing submodule. Useful for processing log files produced by fix-phonon of LAMMPS</p>
+<p>[extended_summary]</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mdlib.post.symmetry.html" class="btn btn-neutral float-right" title="mdlib.post.symmetry package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mdlib.html" class="btn btn-neutral float-left" title="mdlib package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Wassim Kassem
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

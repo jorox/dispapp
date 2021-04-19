@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Post-processing &mdash; Argon Phonon Properties 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Results" href="results.html" />
+    <link rel="prev" title="The LAMMPS stuff" href="lammps.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Argon Phonon Properties
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lammps.html">The LAMMPS stuff</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Post-processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-log-files">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#phana-ipynb">phana.ipynb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting">Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Python Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Argon Phonon Properties</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Post-processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/post.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="post-processing">
+<h1>Post-processing<a class="headerlink" href="#post-processing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-log-files">
+<h2>The log files<a class="headerlink" href="#the-log-files" title="Permalink to this headline">¶</a></h2>
+<p>The log files produced by fix-phonon are not very hard to understand. A quick look at src/fix-phonon.cpp shows that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">write</span> <span class="n">log</span> <span class="n">file</span><span class="p">,</span> <span class="n">here</span> <span class="n">however</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">dynamical</span> <span class="n">matrix</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">written</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;############################################################</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# Current time step                      : &quot;</span> <span class="n">BIGINT_FORMAT</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">update</span><span class="o">-&gt;</span><span class="n">ntimestep</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# Total number of measurements           : </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">neval</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# Average temperature of the measurement : </span><span class="si">%lg</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">TempAve</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# Boltzmann constant under current units : </span><span class="si">%lg</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">boltz</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# basis vector A1 = [</span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# basis vector A2 = [</span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# basis vector A3 = [</span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">basevec</span><span class="p">[</span><span class="mi">8</span><span class="p">]);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;############################################################</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;# qx</span><span class="se">\t</span><span class="s2"> qy </span><span class="se">\t</span><span class="s2"> qz </span><span class="se">\t\t</span><span class="s2"> Phi(q)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+<span class="n">EnforceASR</span><span class="p">();</span>
+
+<span class="o">//</span> <span class="n">to</span> <span class="n">get</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">M</span> <span class="n">x</span> <span class="n">Phi</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">idq</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idq</span> <span class="o">&lt;</span> <span class="n">ntotal</span><span class="p">;</span> <span class="o">++</span><span class="n">idq</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ndim</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">idim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idim</span> <span class="o">&lt;</span> <span class="n">fft_dim</span><span class="p">;</span> <span class="o">++</span><span class="n">idim</span><span class="p">)</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">jdim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">jdim</span> <span class="o">&lt;</span> <span class="n">fft_dim</span><span class="p">;</span> <span class="o">++</span><span class="n">jdim</span><span class="p">)</span> <span class="n">Phi_all</span><span class="p">[</span><span class="n">idq</span><span class="p">][</span><span class="n">ndim</span><span class="o">++</span><span class="p">]</span> <span class="o">*=</span> <span class="n">M_inv_sqrt</span><span class="p">[</span><span class="n">idim</span><span class="o">/</span><span class="n">sysdim</span><span class="p">]</span><span class="o">*</span><span class="n">M_inv_sqrt</span><span class="p">[</span><span class="n">jdim</span><span class="o">/</span><span class="n">sysdim</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">idq</span> <span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">ix</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ix</span> <span class="o">&lt;</span> <span class="n">nx</span><span class="p">;</span> <span class="o">++</span><span class="n">ix</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">double</span> <span class="n">qx</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span><span class="o">/</span><span class="n">double</span><span class="p">(</span><span class="n">nx</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">iy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iy</span> <span class="o">&lt;</span> <span class="n">ny</span><span class="p">;</span> <span class="o">++</span><span class="n">iy</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">double</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="n">iy</span><span class="p">)</span><span class="o">/</span><span class="n">double</span><span class="p">(</span><span class="n">ny</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">iz</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">iz</span> <span class="o">&lt;</span> <span class="n">nz</span><span class="p">;</span> <span class="o">++</span><span class="n">iz</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">double</span> <span class="n">qz</span> <span class="o">=</span> <span class="n">double</span><span class="p">(</span><span class="n">iz</span><span class="p">)</span><span class="o">/</span><span class="n">double</span><span class="p">(</span><span class="n">nz</span><span class="p">);</span>
+      <span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">qz</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">idim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idim</span> <span class="o">&lt;</span> <span class="n">fft_dim2</span><span class="p">;</span> <span class="o">++</span><span class="n">idim</span><span class="p">)</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span> <span class="s2">&quot; </span><span class="si">%lg</span><span class="s2"> </span><span class="si">%lg</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">real</span><span class="p">(</span><span class="n">Phi_all</span><span class="p">[</span><span class="n">idq</span><span class="p">][</span><span class="n">idim</span><span class="p">]),</span>
+                                  <span class="n">std</span><span class="p">::</span><span class="n">imag</span><span class="p">(</span><span class="n">Phi_all</span><span class="p">[</span><span class="n">idq</span><span class="p">][</span><span class="n">idim</span><span class="p">]));</span>
+      <span class="n">fprintf</span><span class="p">(</span><span class="n">flog</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="o">++</span><span class="n">idq</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">fflush</span><span class="p">(</span><span class="n">flog</span><span class="p">);</span>    
+</pre></div>
+</div>
+<p>And sample generated log file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Current time step                      : 6500000</span>
+<span class="c1"># Total number of measurements           : 600000</span>
+<span class="c1"># Average temperature of the measurement : 299.371</span>
+<span class="c1"># Boltzmann constant under current units : 8.61734e-05</span>
+<span class="c1"># basis vector A1 = [2.56873 0 0]</span>
+<span class="c1"># basis vector A2 = [1.28436 2.22458 0]</span>
+<span class="c1"># basis vector A3 = [1.28436 0.741528 2.09736]</span>
+
+<span class="c1"># qx	 qy 	 qz 		 Phi(q)</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.125</span> <span class="mf">0.00585736</span> <span class="mf">6.8795e-25</span> <span class="o">-</span><span class="mf">0.000156973</span> <span class="o">-</span><span class="mf">9.29854e-05</span> <span class="o">-</span><span class="mf">7.36102e-05</span> <span class="mf">1.46466e-06</span> <span class="o">-</span><span class="mf">0.000156973</span> <span class="mf">9.29854e-05</span> <span class="mf">0.0055872</span> <span class="mi">0</span> <span class="o">-</span><span class="mf">3.49646e-05</span> <span class="o">-</span><span class="mf">1.0267e-06</span> <span class="o">-</span><span class="mf">7.36102e-05</span> <span class="o">-</span><span class="mf">1.46466e-06</span> <span class="o">-</span><span class="mf">3.49646e-05</span> <span class="mf">1.0267e-06</span> <span class="mf">0.0341953</span> <span class="mf">1.48916e-25</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.25</span> <span class="mf">0.0190152</span> <span class="mi">0</span> <span class="mf">7.96227e-05</span> <span class="mf">0.000201581</span> <span class="o">-</span><span class="mf">0.000219957</span> <span class="mf">7.29924e-06</span> <span class="mf">7.96227e-05</span> <span class="o">-</span><span class="mf">0.000201581</span> <span class="mf">0.0187525</span> <span class="mi">0</span> <span class="o">-</span><span class="mf">0.000154354</span> <span class="mf">1.0039e-05</span> <span class="o">-</span><span class="mf">0.000219957</span> <span class="o">-</span><span class="mf">7.29924e-06</span> <span class="o">-</span><span class="mf">0.000154354</span> <span class="o">-</span><span class="mf">1.0039e-05</span> <span class="mf">0.112138</span> <span class="o">-</span><span class="mf">1.28116e-23</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.375</span> <span class="mf">0.0313595</span> <span class="o">-</span><span class="mf">2.7518e-24</span> <span class="mf">0.000281555</span> <span class="o">-</span><span class="mf">0.000344008</span> <span class="o">-</span><span class="mf">0.000342451</span> <span class="o">-</span><span class="mf">8.86663e-06</span> <span class="mf">0.000281555</span> <span class="mf">0.000344008</span> <span class="mf">0.0320947</span> <span class="o">-</span><span class="mf">2.74977e-24</span> <span class="o">-</span><span class="mf">0.000221315</span> <span class="o">-</span><span class="mf">1.10892e-05</span> <span class="o">-</span><span class="mf">0.000342451</span> <span class="mf">8.86663e-06</span> <span class="o">-</span><span class="mf">0.000221315</span> <span class="mf">1.10892e-05</span> <span class="mf">0.186243</span> <span class="mf">1.76698e-23</span>
+</pre></div>
+</div>
+<p>The code shows that what is being written to the log file is the Φ function itself (unlike for the binary file actually!). Great, less work for us!</p>
+<p>If we look at an example log file we can see that the first three values are the coordinates of q and the rest are the real and complex parts for the terms of the Φ matrix.</p>
+<p>So for a primitive unit cell, for example, we can expect 3x3x2=19 values.
+No need to worry about whether it’s column or row sorted since the eigenvalues of the transpose and the matrix are the same.</p>
+</div>
+<div class="section" id="phana-ipynb">
+<h2>phana.ipynb<a class="headerlink" href="#phana-ipynb" title="Permalink to this headline">¶</a></h2>
+<p>The generated data is post-processed using a custom Python module which reads the log files produced by fix-phonon.
+The module returns the last dynamical matrix which seems to be the same thing that phana does.
+Then the dispersion curve is calculated along a selected path of special points.
+The data is interpolated using cubic splines and the eigenvalues are sorted.</p>
+</div>
+<div class="section" id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+<p>For plotting an interactive figure we use Bokeh with custom JS callback functions</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="results.html" class="btn btn-neutral float-right" title="Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lammps.html" class="btn btn-neutral float-left" title="The LAMMPS stuff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Wassim Kassem
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The LAMMPS stuff &mdash; Argon Phonon Properties 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Post-processing" href="post.html" />
+    <link rel="prev" title="Introduction" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Argon Phonon Properties
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The LAMMPS stuff</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#index-variables">Index variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-argon-crystal">Building the argon crystal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-map-file">The map file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-primitive-cell">The primitive cell</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-steps">Simulation steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-fix-phonon-parameters">The fix-phonon parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post.html">Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextsteps.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Python Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Argon Phonon Properties</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>The LAMMPS stuff</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/lammps.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-lammps-stuff">
+<h1>The LAMMPS stuff<a class="headerlink" href="#the-lammps-stuff" title="Permalink to this headline">¶</a></h1>
+<p>The LAMMPS input script for generating the dynamical matrix at different temperatures and pressures.</p>
+<div class="section" id="index-variables">
+<h2>Index variables<a class="headerlink" href="#index-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NUC</span></code> number of lattice cells in each direction. Assumed to be the same for all directions. Required for monitering the lattice constant change and calculating the stress-strain relationship</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEMP</span></code> the temperature in Kelvins</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALAT0</span></code> lattice constant at zero pressure. Required to calculate strain</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DLAT</span></code> lattice constant scaling factor depending on the hkl direction of the unit cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRESS</span></code> the pressure along the x-axis of the box</p></li>
+</ul>
+</div>
+<div class="section" id="building-the-argon-crystal">
+<h2>Building the argon crystal<a class="headerlink" href="#building-the-argon-crystal" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-map-file">
+<h3>The map file<a class="headerlink" href="#the-map-file" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://lammps.sandia.gov/doc/fix_phonon.html">fix-phonon</a> requires a <strong>map</strong> file in order to work. The map file is the unit cell and index for each atom. It has a specific format</p>
+<p>nx ny nz nk
+#comment line
+ix iy iz ik id</p>
+<p>20 20 20 1
+#l1 l2 l3 k atom_id
+0 0 0 0 1</p>
+<ul class="simple">
+<li><p>nx, ny, nz: are the number of unit cells in the x y z directions.</p></li>
+<li><p>nk : number of atoms in the unit cell</p></li>
+<li><p>ix, iy, iz, ik: indices for an atom (which unit cell it belongs to and its basis index)</p></li>
+<li><p>id: the id of the atom</p></li>
+</ul>
+</div>
+<div class="section" id="the-primitive-cell">
+<h3>The primitive cell<a class="headerlink" href="#the-primitive-cell" title="Permalink to this headline">¶</a></h3>
+<p>There are many ways to generate a LAMMPS data file. We are goin to use Python and our own code.</p>
+<p>The file was obtained by rotating the standard FCC primitive unit cell</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">md.utils</span> <span class="kn">import</span> <span class="n">lmp_box</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">lmp_box</span><span class="p">(</span> <span class="mf">5.12</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]])</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The primitive FCC argon unit cell is then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># fcc_prim.lmp - Fcc Ar oriented X=[110] Y=[011] Z=[101].</span>
+
+       <span class="mi">1</span>  <span class="n">atoms</span>
+       <span class="mi">1</span>  <span class="n">atom</span> <span class="n">types</span>
+
+  <span class="mf">0.00000000</span>       <span class="mf">3.62745779</span>  <span class="n">xlo</span> <span class="n">xhi</span>
+  <span class="mf">0.00000000</span>       <span class="mf">3.14147060</span>  <span class="n">ylo</span> <span class="n">yhi</span>
+  <span class="mf">0.00000000</span>       <span class="mf">2.96180688</span>  <span class="n">zlo</span> <span class="n">zhi</span>
+  <span class="mf">1.81372889</span>       <span class="mf">1.81372889</span>  <span class="mf">1.04715687</span> <span class="n">xy</span> <span class="n">xz</span> <span class="n">yz</span>
+
+<span class="n">Masses</span>
+
+       <span class="mi">1</span>   <span class="mf">39.94800000</span>    <span class="c1"># Ar</span>
+        
+<span class="n">Atoms</span> <span class="c1"># atomic</span>
+
+     <span class="mi">1</span>    <span class="mi">1</span>        <span class="mf">0.00000000</span>       <span class="mf">0.00000000</span>       <span class="mf">0.00000000</span>
+</pre></div>
+</div>
+<p>To generate a 20x20x20 super cell from this unit cell we use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python md.pre.build_atoms fcc_prim.lmp <span class="m">20</span> <span class="m">20</span> <span class="m">20</span> ar_prim.lmp
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="simulation-steps">
+<h2>Simulation steps<a class="headerlink" href="#simulation-steps" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The simulation reads the data file <strong>argon_prim.lmp</strong> which has the coordinates of the atoms.</p></li>
+<li><p>AN LJ interatomic potential is set up using values obtained from literature</p></li>
+<li><p>The atoms are relaxed at the required temperature and pressure for 200ps</p></li>
+<li><p>The positions of the atoms are sampled every 10 steps (0.05ps) and the correlation calculated over 5000steps (25ps)</p></li>
+</ol>
+</div>
+<div class="section" id="the-fix-phonon-parameters">
+<h2>The fix-phonon parameters<a class="headerlink" href="#the-fix-phonon-parameters" title="Permalink to this headline">¶</a></h2>
+<p>fix-phonon produces better results (smoother data) when run for very long times. After taking a look at the examples in the LAMMPS source files we set the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fix 1 all npt temp ${TEMP} ${TEMP} 0.5 iso ${PRESS} ${PRESS} 1.0 nreset 10000 pchain 8 drag 1.0
+...
+variable  nequil equal ${TEQ}/dt
+variable  ncorr  equal ${TCOR}/dt
+variable  nsteps equal ${nequil}+5*(10*${ncorr})
+...
+fix 3 all phonon   10 ${ncorr} ${nequil} map.argon_prim.lmp ArPrim.${PRESS} nasr 100
+...
+run ${nsteps}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TEMP</span></code> and <code class="docutils literal notranslate"><span class="pre">PRESS</span></code> are obviously the temperature and pressure for the simulation. The temperature was set at 10K, and the pressure was varied between -500bar and 500bar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEQ</span></code> and <code class="docutils literal notranslate"><span class="pre">TCOR</span></code> are the durations for the equilibration and correlation periods. They were chosen to be 500ps and 100ps respectively.</p></li>
+<li><p>The simulation is ran for one <code class="docutils literal notranslate"><span class="pre">TEQ</span></code> plus five (10*<code class="docutils literal notranslate"><span class="pre">TEQ</span></code>) picoseconds. The factor of 10 is because the positions are samples every 10 steps, so the sampling window is actually 1 nanosecond.</p></li>
+<li><p>This will give you 5 measurments of the dynamical matrix, but they are not averaged in post. I don’t believe this is done in phana.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="post.html" class="btn btn-neutral float-right" title="Post-processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Wassim Kassem
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
