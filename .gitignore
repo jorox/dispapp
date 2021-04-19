@@ -9,4 +9,3 @@ out.*
 .ipynb_checkpoints/
 workspace/
 SAAP/
-doc/build/
